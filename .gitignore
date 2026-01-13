@@ -1,0 +1,48 @@
+## --- Delphi/Pascal Specific ---
+
+# Arquivos de Unidades Compiladas e Binários
+*.dcu
+*.dcp
+*.dpl
+*.bpl
+*.pancore
+*.bpi
+*.lspdown
+*.lib
+*.obj
+*.o
+
+# Arquivos de Executáveis e Saída de Build
+*.exe
+*.dll
+*.so
+*.dylib
+*.apk
+*.app
+
+# Arquivos de Configuração Local do Usuário (NUNCA versione estes)
+*.identcache
+*.local
+*.skincfg
+*.dsk
+*.dof
+*.cfg
+*.res
+*.~*
+*.stat
+
+# Pastas de Saída Padrão (Baseadas nas configurações de build do Delphi)
+__recovery/
+__history/
+ModelSupport_*/
+Win32/
+Win64/
+
+## --- Database & Logs ---
+*.log
+*.db
+*.sqlite
+
+## --- IDE/Tools Specific ---
+# Caso use o FastReport ou outros componentes que geram arquivos temporários
+*.fr3
