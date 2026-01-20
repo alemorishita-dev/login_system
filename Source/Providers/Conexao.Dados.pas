@@ -13,6 +13,7 @@ type
     Conexao: TFDConnection;
     procedure DataModuleCreate(Sender: TObject);
   private
+    constructor Create;
     class var FInstancia: TDataProvider;
     procedure ConfigurarConexao;
   public
@@ -30,7 +31,7 @@ procedure TDataProvider.ConfigurarConexao;
 begin
   Conexao.Params.Clear;
   Conexao.Params.DriverID := 'FB'; // Exemplo com Firebird
-  Conexao.Params.Database := 'C:\Dados\SEU_BANCO.FDB';
+  Conexao.Params.Database := 'C:\Bases de Dados\login_system\BD_LOGIN.FDB';
   Conexao.Params.UserName := 'SYSDBA';
   Conexao.Params.Password := 'masterkey';
 
@@ -42,6 +43,11 @@ begin
     on E: Exception do
       raise Exception.Create('Erro ao conectar ao banco de dados: ' + E.Message);
   end;
+end;
+
+constructor TDataProvider.Create;
+begin
+  Conexao := TFDConnection.Create(nil);
 end;
 
 procedure TDataProvider.DataModuleCreate(Sender: TObject);
