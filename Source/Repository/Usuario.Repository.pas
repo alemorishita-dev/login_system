@@ -17,6 +17,9 @@ type
 
 implementation
 
+uses
+  FireDAC.DApt, FireDAC.Stan.Async;
+
 { TUsuarioRepository }
 
 constructor TUsuarioRepository.Create;
@@ -35,7 +38,8 @@ begin
     lQuery := TFDQuery.Create(nil);
     lQuery.Connection := FConexao;
     lQuery.SQL.Add('SELECT ID, NOME, EMAIL, LOGIN, SENHA, ATIVO');
-    lQuery.SQL.Add('WHERE LOGIN = :LOGIN');
+    lQuery.SQL.Add('  FROM USUARIOS');
+    lQuery.SQL.Add(' WHERE LOGIN = :LOGIN');
     lQuery.Params.ParamByName('LOGIN').AsString := pLogin;
     lQuery.Open;
 
@@ -47,7 +51,7 @@ begin
       Result.Email := lQuery.Fields.FieldByName('EMAIL').AsString;
       Result.Login := lQuery.Fields.FieldByName('LOGIN').AsString;
       Result.Senha := lQuery.Fields.FieldByName('SENHA').AsString;
-      Result.Ativo := lQuery.Fields.FieldByName('ATIVO').AsBoolean;
+      Result.Ativo := lQuery.FieldByName('ATIVO').AsString = 'S';
     end;
   finally
     lQuery.Free;
