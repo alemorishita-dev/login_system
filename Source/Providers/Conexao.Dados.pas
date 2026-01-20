@@ -31,6 +31,7 @@ procedure TDataProvider.ConfigurarConexao;
 begin
   Conexao.Params.Clear;
   Conexao.Params.DriverID := 'FB'; // Exemplo com Firebird
+  //Conexao.Params.Database := 'C:\Dados\SEU_BANCO.FDB';
   Conexao.Params.Database := 'C:\Bases de Dados\login_system\BD_LOGIN.FDB';
   Conexao.Params.UserName := 'SYSDBA';
   Conexao.Params.Password := 'masterkey';
